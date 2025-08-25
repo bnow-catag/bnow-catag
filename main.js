@@ -167,7 +167,7 @@
   // Footer WhatsApp
   // -------------------------
   (function(){
-    const encoded = "NTY5ODcyNjA1NDQ="; // +56987260544 en Base64
+    const encoded = "NTY5ODQ3Njg2MDY=";
     const number = atob(encoded); 
     const link = document.createElement("a");
     link.href = "https://wa.me/" + number;
