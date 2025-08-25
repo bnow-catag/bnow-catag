@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bnow - Catálogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fafafa; 
+      --card:#fff; 
+      --ink:#444; 
+      --muted:#777; 
+      --accent:#c084fc; 
+      --chip:#B4485F; 
+      --price:#43332F;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'Inter', sans-serif;}
+    header, footer{ text-align:center;padding:32px 20px 8px;background-color:#B4485F;color:#fff;}
+    header img{ max-height:90px;display:block;margin:0 auto 10px;}
+    h1{margin:0 0 6px;font-size:clamp(24px,4vw,36px);color:#fff}
+    p.lead{margin:0;color:#fdf5f6}
+    .search-box{margin:20px auto;max-width:1100px;padding:0 20px}
+    .search-box input{width:100%;padding:12px 16px;font-size:16px;border-radius:12px;border:1px solid #ddd;background:#ffffff;color:var(--ink)}
+    .grid{display:grid;gap:16px;padding:20px;max-width:1200px;margin:auto;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));justify-items:center;align-items:start;}
+    @media (max-width: 360px){.grid{ grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }.card{ max-width:240px; }}
+    .card{background:var(--card);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 12px rgba(0,0,0,.08);transition:transform .2s, box-shadow .2s;width:100%;max-width:280px;min-height:380px;}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+    .thumb{aspect-ratio:1/1;background:#fdf5f6;display:grid;place-items:center}
+    .thumb img{width:100%;height:100%;object-fit:contain}
+    .body{padding:14px; background-color: #fdf5f6}
+    .title{font-weight:700;font-size:17px;margin:0 0 6px;color:#43332F}
+    .desc{font-size:14px;color:#43332F;min-height:42px}
+    .meta{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+    .price{font-weight:800;color:var(--price);font-size:18px}
+    .chip{font-size:12px;color:#fff;background:var(--chip);padding:4px 8px;border-radius:999px}
+    .actions{display:flex;gap:10px;margin-top:12px;align-items:center;flex-wrap:wrap}
+    .btn{border:none;cursor:pointer;border-radius:12px;padding:10px 12px;font-weight:700;font-size:14px;transition:.2s}
+    .btn.primary{background:#B4485F;color:white}
+    .btn.primary:hover{background:#DCA9A5}
+    .btn.secondary{background:#e5e7eb;color:#333}
+    .btn.secondary:hover{background:#d4d4d8}
+    .qty-control{display:flex;align-items:center;gap:5px}
+    .qty-control button{padding:6px 10px;border:1px solid #ddd;background:#f3f4f6;border-radius:6px;cursor:pointer}
+    .qty-control input{width:50px;text-align:center;border:1px solid #ddd;border-radius:6px;padding:4px}
+    footer{padding:32px 20px 8px;color:#fff}
+    .pagination{text-align:center;margin:20px}
+    .pagination button{margin:0 5px;padding:8px 12px;border:none;border-radius:8px;cursor:pointer;background:#DCA9A5;color:#fff;font-weight:600;}
+    .pagination button.active{background:#B4485F;color:#fff}
+    #cart{position:fixed;top:20px;right:20px;background:#fff;border:1px solid #ddd;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.2);width:340px;max-height:70vh;overflow:auto;padding:16px;display:none;flex-direction:column;z-index:1000;}
+    #cart h3{margin:0 0 10px}
+    #cart ul{list-style:none;padding:0;margin:0}
+    #cart ul li{font-size:14px;margin-bottom:8px}
+    #cart .line-controls{display:flex;align-items:center;gap:4px}
+    #cart input.lineQty{width:48px;text-align:center;border:1px solid #ddd;border-radius:6px;padding:4px}
+    #cart .total{font-weight:700;margin-top:10px}
+    #cart .btn{margin-top:10px;width:100%}
+    #cart .small-btn{padding:4px 8px;font-size:12px;margin-left:4px;border:1px solid #ddd;background:#f3f4f6;border-radius:6px;cursor:pointer}
+    #cartClose{position:absolute;top:8px;right:8px;border:none;background:transparent;font-size:16px;cursor:pointer;}
+    #toggleCart{position:fixed;top:20px;right:380px;padding:12px 16px;background:#DCA9A5;color:white;border:none;border-radius:999px;cursor:pointer;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.2);}
+    @media(max-width:900px){#toggleCart{right:20px;top:20px}}
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #B4485F;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,.2);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 2000;
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo">
+    <h1>Catálogo de cosméticos</h1>
+    <p class="lead">Productos pensados en ti</p>
+  </header>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Buscar productos..." />
+  </div>
+
+  <section class="grid" id="productGrid"></section>
+
+  <div class="pagination" id="pagination"></div>
+
+  <footer>
+    <p>
+      ¿Dudas o consultas?
+      <span id="whatsappLink" style="margin-left:15px;"></span>
+    </p>
+  </footer>
+
+  <!-- Carrito -->
+  <button id="toggleCart">🛒</button>
+  <div id="cart">
+    <button id="cartClose">✖</button>
+    <h3>Carrito de Cotización</h3>
+    <ul id="cartItems"></ul>
+    <p class="total">Total: <strong id="cartTotal">$0</strong></p>
+    <button class="btn primary" id="copyCart">Copiar pedido</button>
+    <button class="btn secondary" id="clearCart">Vaciar Carrito</button>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="productos.js"></script>
+  <script src="main.js"></script>
+
+  
+</body>
+</html>
