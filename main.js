@@ -145,23 +145,42 @@
   cartBtn.addEventListener('click',()=>{cartBox.style.display=cartBox.style.display==='flex'?'none':'flex';});
   cartClose.addEventListener('click',()=>{cartBox.style.display='none';});
 
-  copyCart.addEventListener('click',()=>{
-    if(cart.length===0){ showToast('El carrito está vacío ❌'); return; }
-    const lines=cart.map(i=>`${i.name} — Cantidad: ${i.qty}, Unitario: ${formatCLP(i.price)}, Total: ${formatCLP(i.price*i.qty)}`);
-    const total=cart.reduce((sum,i)=>sum+i.price*i.qty,0);
-    const text=`Mi cotización:\n${lines.join('\n')}\n\nTotal: ${formatCLP(total)}`;
-    navigator.clipboard.writeText(text).then(()=> showToast('Carrito copiado al portapapeles, pegalo en  WhatsApp ✅'));
-  });
-
-  // -------------------------
-  // Toast
-  // -------------------------
-  function showToast(message) {
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-    toast.classList.add("show");
-    setTimeout(()=> toast.classList.remove("show"), 3000);
+  // Botón "Copiar carrito"
+copyCart.addEventListener('click',()=>{
+  if(cart.length===0){
+    showToast('El carrito está vacío ❌');
+    return;
   }
+
+  const lines = cart.map(i=>`${i.name} — Cantidad: ${i.qty}, Unitario: ${formatCLP(i.price)}, Total: ${formatCLP(i.price*i.qty)}`);
+  const total = cart.reduce((sum,i)=>sum+i.price*i.qty,0);
+  const text = `Mi cotización:\n${lines.join('\n')}\n\nTotal: ${formatCLP(total)}`;
+
+  navigator.clipboard.writeText(text).then(()=>{
+    const encoded = "NTY5ODQ3Njg2MDY="; // número en Base64
+    const number = atob(encoded);
+
+    showToast(`
+      ✅ Carrito copiado al portapapeles<br>
+      <a href="https://wa.me/${number}" target="_blank"
+         style="color:#25D366; font-weight:bold; text-decoration:none;
+                display:inline-flex; align-items:center; gap:6px; margin-top:5px;">
+        <img src="https://img.icons8.com/color/24/000000/whatsapp.png"
+             alt="WhatsApp" style="width:20px; height:20px;">
+        Pégalo en WhatsApp
+      </a>
+    `);
+  });
+});
+
+
+// Toast con soporte para HTML
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.innerHTML = message; // permite texto + HTML
+  toast.classList.add("show");
+  setTimeout(()=> toast.classList.remove("show"), 6000); // 6 seg para dar tiempo a click
+}
 
   // -------------------------
   // Footer WhatsApp

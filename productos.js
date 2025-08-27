@@ -7,11 +7,18 @@ window.ALL_PRODUCTS = [
     "brand": "Febble"
   },
   {
-    "name": "Esponja Maquillaje Individual Max Belle",
+    "name": "Esponja Maquillaje Individual - Max Belle",
     "desc": "Diseñadas para difuminar y obtener un acabado uniforme y natural.",
     "price": 990,
     "img": "img/mb095285.jpg",
     "brand": "Max Belle"
+  },
+  {
+    "name": "Paleta sombra StartLight Quicksand - Febble ",
+    "desc": "Diseñadas para difuminar y obtener un acabado uniforme y natural.",
+    "price": 4500,
+    "img": "img/mb013924.jpg",
+    "brand": "Febble"
   },
   {
     "name": "Paleta de sombras The most beatiful - Max Belle",
@@ -23,19 +30,19 @@ window.ALL_PRODUCTS = [
   {
     "name": "Paleta de sombras y rubores - USHAS",
     "desc": "Hermosos y variados colores en una sola paleta.",
-    "price": 4680,
+    "price": 4990,
     "img": "img/mb013526.jpg",
     "brand": "Ushas"
   },
   {
     "name": "Base líquida - Max Belle",
     "desc": "Formulada para disimular las imperfecciones, larga duración.",
-    "price": 5890,
+    "price": 3990,
     "img": "img/mb017045.jpg",
     "brand": "Max Belle"
   },
   {
-    "name": "Set de 5 brochas - Seesuor",
+    "name": "Set de 7 brochas - Seesuor",
     "desc": "Consigue un acabado impecable con el Kit de Brochas Seesuor.",
     "price": 3490,
     "img": "img/mb010101.jpg",
@@ -57,7 +64,7 @@ window.ALL_PRODUCTS = [
   },
   {
     "name": "Primer base translucida y blanquea - Flamenco",
-    "desc": "Balancena y revitaliza el color de tu piel.",
+    "desc": "Balancea y revitaliza el color de tu piel.",
     "price": 4990,
     "img": "img/mb058134.jpg",
     "brand": "Flamenco"
@@ -145,5 +152,89 @@ window.ALL_PRODUCTS = [
     "price": 3990,
     "img": "img/mb017034.webp",
     "brand": "Ushas"
+  },
+  {
+    "name": "Máscara de pestañas 24 horas - Flamenco",
+    "desc": "Pestañas largas y top todo el día y sin retoques.",
+    "price": 3990,
+    "img": "img/mb016052.jpg",
+    "brand": "Flamenco"
+  },
+  {
+    "name": "Paleta de sombras 10 colores - Flamenco",
+    "desc": "Tonos calidos y frescos que te hacen lucir sofisticada todos los días.",
+    "price": 3990,
+    "img": "img/mb010110.webp",
+    "brand": "Flamenco"
+  },
+  {
+    "name": "Paleta de sombras 4 colores - Max Belle",
+    "desc": "Diseñada para realzar y dar color a la mirada.",
+    "price": 1990,
+    "img": "img/mb013969.jpg",
+    "brand": "Max Belle"
+  },
+  {
+    "name": "Base liquida control de aceite - Flamenco",
+    "desc": "Dermatológicamente comprobada,ayuda a controlar la secreción de aceite en la piel durante todo el día.",
+    "price": 4990,
+    "img": "img/mb058156.jpg",
+    "brand": "Flamenco"
+  },
+  {
+    "name": "Base liquida acabado natural hidratante - Flamenco ",
+    "desc": "Base líquida de acabado natural.",
+    "price": 4990,
+    "img": "img/mb017052.png",
+    "brand": "Flamenco"
+  },
+  {
+    "name": "Colorete en barra Fast Base - Ushas",
+    "desc": "El rubor en barra de Ushas te permite lograr un look natural y fresco en segundos.",
+    "price": 3990,
+    "img": "img/mb014271.webp",
+    "brand": "Ushas"
+  },
+  {
+    "name": "Iluminador en barra 2 en 1 - Max Belle",
+    "desc": "Su fórmula en líquido y barra permite realzar las zonas clave de tu rostro.",
+    "price": 3690,
+    "img": "img/mb014390.jpg",
+    "brand": "Max Belle"
+  },
+  {
+    "name": "Iluminador líquido - Flamenco",
+    "desc": "Iluminador líquido de textura ligera que brinda un brillo sofisticado y elegante.",
+    "price": 2990,
+    "img": "img/mb014383.png",
+    "brand": "Flamenco"
+  },
+  {
+    "name": "Iluminador en barra - Flamenco",
+    "desc": "Práctico iluminador en barra que otorga luz instantánea y elegante al maquillaje.",
+    "price": 2990,
+    "img": "img/mb014116.png",
+    "brand": "Flamenco"
+  },
+  {
+    "name": "Iluminador en polvo FIT - Max Belle",
+    "desc": "Polvo iluminador de acabado fino que aporta un resplandor elegante y natural.",
+    "price": 3990,
+    "img": "img/mb014384.jpg",
+    "brand": "Max Belle"
+  },
+  {
+    "name": "Polvo fijador finishing powder - Flamenco",
+    "desc": "Polvo fijador traslúcido que sella el maquillaje con acabado suave y elegante.",
+    "price": 3490,
+    "img": "img/mb014066.jpg",
+    "brand": "Flamenco"
+  },
+  {
+    "name": "Esponja para maquillaje en esfera - Max Belle",
+    "desc": "“Juego de esponjas profesionales en esfera, ideales para una aplicación uniforme y un acabado impecable",
+    "price": 1990,
+    "img": "img/mb090319.png",
+    "brand": "Max Belle"
   }
 ];
