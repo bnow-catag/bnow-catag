@@ -199,7 +199,7 @@ window.ALL_PRODUCTS = [
     "name": "Iluminador en barra 2 en 1 - Max Belle",
     "desc": "Su fórmula en líquido y barra permite realzar las zonas clave de tu rostro.",
     "price": 3690,
-    "img": "img/mb014390.jpg",
+    "img": "img/mb014390.webp",
     "brand": "Max Belle"
   },
   {
